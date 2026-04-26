@@ -18,16 +18,16 @@ export default function AnalyticsPage() {
       <Sidebar />
       <DashboardHeader />
       
-      <main className="ml-20 lg:ml-24 pt-20 transition-all">
-        <div className="max-w-[1600px] mx-auto px-6 py-8">
+      <main className="ml-0 md:ml-20 lg:ml-24 pt-20 pb-10 transition-all">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-6 py-8">
           
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
             <div>
-              <h1 className="text-4xl font-bold title-serif text-slate-800 tracking-tight">Advanced Analytics</h1>
+              <h1 className="text-3xl md:text-4xl font-bold title-serif text-slate-800 tracking-tight">Advanced Analytics</h1>
               <p className="text-slate-400 font-medium mt-1">Deep dive into institutional performance metrics</p>
             </div>
             
-            <button className="flex items-center gap-2 px-6 py-3 bg-white border border-slate-200 rounded-xl text-slate-600 font-bold hover:bg-slate-50 transition-all shadow-sm">
+            <button className="flex items-center justify-center gap-2 px-6 py-3 bg-white border border-slate-200 rounded-xl text-slate-600 font-bold hover:bg-slate-50 transition-all shadow-sm w-full sm:w-auto">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>

@@ -18,7 +18,7 @@ const Navbar = () => {
     <nav className="bg-white border-b border-slate-200/60 py-5 px-8 mb-10 flex justify-between items-center sticky top-0 z-50 backdrop-blur-md bg-white/90">
       <div className="flex gap-10 items-center">
         <Link href="/dashboard" className="text-2xl font-bold title-serif text-primary tracking-tight">
-          SRM App
+          SRM 
         </Link>
         <div className="flex gap-6">
           <Link 

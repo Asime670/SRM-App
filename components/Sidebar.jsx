@@ -3,14 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useUI } from "@/context/UIContext";
 import LogoutModal from "./LogoutModal";
 
 /**
- * Sidebar component with navigation icons and logout modal integration
+ * Responsive Sidebar with Drawer functionality for mobile
  */
 const Sidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
+  const { isSidebarOpen, closeSidebar } = useUI();
   const [isLogoutOpen, setIsLogoutOpen] = useState(false);
 
   const menuItems = [
@@ -54,34 +56,48 @@ const Sidebar = () => {
 
   return (
     <>
-      <aside className="fixed left-0 top-0 h-full w-20 bg-white border-r border-slate-100 flex flex-col items-center py-8 z-50 transition-all lg:w-24">
-        {/* Brand Icon (Simplified for Sidebar) */}
-        <div className="mb-12">
-          <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      {/* Backdrop for mobile */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-slate-900/20 backdrop-blur-sm z-[60] md:hidden transition-all duration-300" 
+          onClick={closeSidebar}
+        />
+      )}
+
+      {/* Sidebar Component */}
+      <aside className={`fixed left-0 top-0 h-full w-72 bg-white border-r border-slate-100 flex flex-col items-center py-8 z-[70] transition-all duration-500 md:w-20 lg:w-24 md:translate-x-0 ${
+        isSidebarOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'
+      }`}>
+        {/* Brand Icon */}
+        <div className="mb-12 flex flex-col items-center gap-4">
+          <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20">
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
           </div>
+          <span className="md:hidden font-bold text-xl text-slate-800 title-serif tracking-tight">SRM Admin</span>
         </div>
 
-        {/* Menu Icons */}
-        <nav className="flex-grow flex flex-col gap-6">
+        {/* Menu Items */}
+        <nav className="flex-grow flex flex-col gap-4 w-full px-4 md:items-center">
           {menuItems.map((item, idx) => {
             const isActive = pathname === item.href;
             return (
               <Link 
                 key={idx} 
                 href={item.href}
-                className={`p-3 rounded-2xl transition-all duration-300 group relative ${
+                onClick={closeSidebar}
+                className={`flex items-center gap-4 p-3.5 rounded-2xl transition-all duration-300 group relative w-full md:w-auto ${
                   isActive 
-                  ? 'bg-blue-50 text-primary' 
+                  ? 'bg-blue-50 text-primary shadow-sm' 
                   : 'text-slate-400 hover:bg-slate-50 hover:text-slate-600'
                 }`}
-                title={item.label}
               >
-                {item.icon}
-                {/* Tooltip */}
-                <span className="absolute left-full ml-4 px-2 py-1 bg-slate-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50">
+                <div className="flex-shrink-0">{item.icon}</div>
+                <span className="md:hidden font-bold text-sm tracking-wide">{item.label}</span>
+                
+                {/* Desktop Tooltip */}
+                <span className="hidden md:block absolute left-full ml-4 px-2.5 py-1.5 bg-slate-800 text-white text-[10px] font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-[80]">
                   {item.label}
                 </span>
               </Link>
@@ -89,16 +105,18 @@ const Sidebar = () => {
           })}
         </nav>
 
-        {/* Logout trigger at bottom */}
-        <button 
-          onClick={() => setIsLogoutOpen(true)}
-          className="mt-auto p-3 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-2xl transition-all"
-          title="Logout"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-          </svg>
-        </button>
+        {/* Logout at bottom */}
+        <div className="w-full px-4 mt-auto">
+          <button 
+            onClick={() => setIsLogoutOpen(true)}
+            className="flex items-center gap-4 w-full p-3.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-2xl transition-all md:justify-center"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            <span className="md:hidden font-bold text-sm tracking-wide">Logout Session</span>
+          </button>
+        </div>
       </aside>
 
       <LogoutModal 

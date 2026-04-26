@@ -1,5 +1,6 @@
 import "./globals.css";
 import { StudentProvider } from "@/context/StudentContext";
+import { UIProvider } from "@/context/UIContext";
 
 export const metadata = {
   title: "Student Result Management App",
@@ -11,7 +12,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="antialiased">
         <StudentProvider>
-          {children}
+          <UIProvider>
+            {children}
+          </UIProvider>
         </StudentProvider>
       </body>
     </html>

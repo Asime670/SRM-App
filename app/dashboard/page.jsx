@@ -35,16 +35,16 @@ export default function DashboardPage() {
       <DashboardHeader />
       
       {/* Content wrapper with offset for sidebar and header */}
-      <main className="ml-20 lg:ml-24 pt-20 transition-all">
-        <div className="max-w-[1600px] mx-auto px-6 py-8">
+      <main className="ml-0 md:ml-20 lg:ml-24 pt-20 pb-10 transition-all">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-6 py-8">
           
           {/* Welcome Section */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+          <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h2 className="text-3xl font-bold text-slate-800 title-serif flex items-center gap-2">
-                Welcome back, Asime Domitila <span className="animate-bounce">👋</span>
+              <h2 className="text-3xl md:text-4xl font-bold title-serif text-slate-800 tracking-tight leading-tight">
+                Welcome back, <span className="inline-flex items-center gap-2 whitespace-nowrap">Asime Domitila <span className="animate-wave inline-block">👋</span></span>
               </h2>
-              <p className="text-slate-400 font-medium mt-1">Here's an overview of your students' performance.</p>
+              <p className="text-slate-400 font-medium mt-1">Here is what's happening in your institution today.</p>
             </div>
             
             <div className="flex items-center gap-3 bg-white p-2 rounded-xl shadow-sm border border-slate-100">
@@ -70,7 +70,7 @@ export default function DashboardPage() {
           {/* Table & Right Panel Grid */}
           <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
             <div className="xl:col-span-3">
-              <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 bg-white rounded-xl shadow-sm border border-slate-100 text-slate-400">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -80,11 +80,11 @@ export default function DashboardPage() {
                   <h3 className="text-lg font-bold text-slate-800">Result Records</h3>
                 </div>
                 
-                <div className="flex items-center gap-3">
-                  <div className="relative">
+                <div className="flex items-center gap-2 md:gap-3 w-full sm:w-auto">
+                  <div className="relative flex-grow sm:flex-grow-0">
                     <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
                   </div>
-                  <button className="p-3 bg-primary text-white rounded-xl shadow-lg shadow-primary/20 hover:bg-primary-hover transition-all">
+                  <button className="p-3 bg-primary text-white rounded-xl shadow-lg shadow-primary/20 hover:bg-primary-hover transition-all flex-shrink-0">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>

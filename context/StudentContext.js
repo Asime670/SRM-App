@@ -32,8 +32,12 @@ export const StudentProvider = ({ children }) => {
     setStudents(students.filter(s => s.id !== id));
   };
 
+  const updateStudent = (id, updatedData) => {
+    setStudents(students.map(s => s.id === id ? { ...s, ...updatedData } : s));
+  };
+
   return (
-    <StudentContext.Provider value={{ students, addStudent, deleteStudent }}>
+    <StudentContext.Provider value={{ students, addStudent, deleteStudent, updateStudent }}>
       {children}
     </StudentContext.Provider>
   );

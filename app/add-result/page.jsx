@@ -23,7 +23,7 @@ export default function AddResultPage() {
       <Sidebar />
       <DashboardHeader />
       
-      <main className="ml-20 lg:ml-24 pt-20 transition-all">
+      <main className="ml-0 md:ml-20 lg:ml-24 pt-20 pb-10 transition-all">
         <div className="max-w-4xl mx-auto px-6 py-12">
           <div className="text-center mb-10">
             <h1 className="text-4xl font-bold text-slate-800 title-serif tracking-tight">Add Student Record</h1>

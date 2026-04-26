@@ -15,8 +15,8 @@ export default function SettingsPage() {
       <Sidebar />
       <DashboardHeader />
       
-      <main className="ml-20 lg:ml-24 pt-20 transition-all">
-        <div className="max-w-[1000px] mx-auto px-6 py-12">
+      <main className="ml-0 md:ml-20 lg:ml-24 pt-20 pb-10 transition-all">
+        <div className="max-w-[1000px] mx-auto px-4 md:px-6 py-12">
           
           <div className="mb-12">
             <h1 className="text-4xl font-bold title-serif text-slate-800 tracking-tight">System Configuration</h1>

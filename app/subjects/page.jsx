@@ -21,16 +21,16 @@ export default function SubjectsPage() {
       <Sidebar />
       <DashboardHeader />
       
-      <main className="ml-20 lg:ml-24 pt-20 transition-all">
-        <div className="max-w-[1600px] mx-auto px-6 py-8">
+      <main className="ml-0 md:ml-20 lg:ml-24 pt-20 pb-10 transition-all">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-6 py-8">
           
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
             <div>
-              <h1 className="text-4xl font-bold title-serif text-slate-800 tracking-tight">Academic Subjects</h1>
+              <h1 className="text-3xl md:text-4xl font-bold title-serif text-slate-800 tracking-tight">Academic Subjects</h1>
               <p className="text-slate-400 font-medium mt-1">Configure curriculum and teacher assignments</p>
             </div>
             
-            <button className="btn-primary flex items-center gap-2 !py-3">
+            <button className="btn-primary flex items-center justify-center gap-2 !py-3 w-full sm:w-auto">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
               </svg>
