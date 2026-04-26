@@ -1,17 +1,17 @@
-import LoginForm from "@/components/LoginForm";
+import SignupForm from "@/components/SignupForm";
 import Image from "next/image";
 
 /**
- * Redesigned Login page with a split-screen layout
+ * Redesigned Signup page with the same split-screen aesthetic as the Login page
  */
-export default function LoginPage() {
+export default function SignupPage() {
   return (
     <main className="min-h-screen flex flex-col lg:flex-row bg-white">
       {/* Left Side: Hero Image */}
       <div className="hidden lg:block lg:w-1/2 relative overflow-hidden">
         <Image 
           src="/auth-hero.png" 
-          alt="Login Hero" 
+          alt="Signup Hero" 
           fill
           className="object-cover"
           priority
@@ -21,14 +21,14 @@ export default function LoginPage() {
         
         {/* Bottom Text Overlay on Image */}
         <div className="absolute bottom-12 left-12 right-12 text-white">
-          <h2 className="text-4xl font-bold title-serif mb-4">Empowering Education</h2>
+          <h2 className="text-4xl font-bold title-serif mb-4">Start Your Journey</h2>
           <p className="text-lg opacity-90 max-w-md font-medium">
-            Join thousands of educators managing student success with our intuitive tools.
+            Join our community of educators and administrators to transform student data into success stories.
           </p>
         </div>
       </div>
 
-      {/* Right Side: Login Form */}
+      {/* Right Side: Signup Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-16 bg-slate-50 lg:bg-white">
         <div className="w-full max-w-md">
           {/* Mobile Logo or Brand */}
@@ -36,7 +36,7 @@ export default function LoginPage() {
             <h1 className="text-3xl font-bold title-serif text-primary">SRM App</h1>
           </div>
           
-          <LoginForm />
+          <SignupForm />
           
           <div className="mt-8 text-center text-slate-500 text-sm">
             <p>© 2026 Student Result Management App. All rights reserved.</p>

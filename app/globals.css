@@ -1,12 +1,13 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --background: #f8fafc;
+  --background: #f0f4f8;
   --foreground: #1e293b;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
+  --primary: #336699;
+  --primary-hover: #254e77;
   --card-bg: #ffffff;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
 @theme inline {
@@ -15,26 +16,31 @@
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
   --color-card: var(--card-bg);
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
 }
 
-/* Custom utility for glassmorphism or specific premium feel if needed */
 .premium-card {
   background: var(--card-bg);
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   box-shadow: var(--shadow);
   padding: 1.5rem;
 }
 
 .btn-primary {
-  @apply bg-primary text-white font-semibold py-2 px-4 rounded-lg transition-colors hover:bg-primary-hover;
+  @apply bg-primary text-white font-bold py-3 px-8 rounded-full transition-all hover:bg-primary-hover shadow-lg shadow-primary/30 active:scale-95;
 }
 
 .input-field {
   @apply w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all;
+}
+
+.title-serif {
+  font-family: var(--font-serif);
 }

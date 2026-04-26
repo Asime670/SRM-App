@@ -5,10 +5,11 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 /**
- * Redesigned LoginForm component with social icons and split-screen compatible styling
+ * SignupForm component with the same premium aesthetic as LoginForm
  */
-const LoginForm = () => {
+const SignupForm = () => {
   const [formData, setFormData] = useState({
+    fullName: "",
     email: "",
     password: "",
   });
@@ -23,12 +24,12 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    if (!formData.email || !formData.password) {
+    if (!formData.fullName || !formData.email || !formData.password) {
       setError("Please fill in all fields.");
       return;
     }
 
-    // Simulate login
+    // Simulate account creation
     setError("");
     router.push("/dashboard");
   };
@@ -36,11 +37,11 @@ const LoginForm = () => {
   return (
     <div className="w-full animate-in fade-in slide-in-from-bottom duration-700">
       <div className="mb-10">
-        <h2 className="text-4xl font-bold title-serif text-slate-900 mb-3">Welcome Back</h2>
-        <p className="text-slate-500 font-medium">Please enter your details to sign in</p>
+        <h2 className="text-4xl font-bold title-serif text-slate-900 mb-3">Create Account</h2>
+        <p className="text-slate-500 font-medium">Start managing results effectively today</p>
       </div>
 
-      {/* Social Login Buttons */}
+      {/* Social Signup Buttons */}
       <div className="grid grid-cols-2 gap-4 mb-8">
         <button className="flex items-center justify-center gap-3 py-3 border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors font-semibold text-slate-700">
           <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -79,6 +80,25 @@ const LoginForm = () => {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
+          <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
+          <div className="relative">
+            <input
+              type="text"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
+              placeholder="John Doe"
+              className="input-field !py-3.5 !pl-12 !rounded-xl"
+            />
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
           <div className="relative">
             <input
@@ -86,7 +106,7 @@ const LoginForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="admin@srm.com"
+              placeholder="john@example.com"
               className="input-field !py-3.5 !pl-12 !rounded-xl"
             />
             <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
@@ -116,24 +136,16 @@ const LoginForm = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between">
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input type="checkbox" className="w-4 h-4 rounded border-slate-300 text-primary focus:ring-primary" />
-            <span className="text-sm text-slate-600 font-medium">Remember me</span>
-          </label>
-          <a href="#" className="text-sm text-primary font-bold hover:underline">Forgot password?</a>
-        </div>
-
         <button type="submit" className="btn-primary w-full !rounded-xl !py-4 text-lg shadow-xl shadow-primary/20">
-          Sign In
+          Sign Up
         </button>
 
         <p className="text-center text-slate-600 font-medium pt-4">
-          Don't have an account? <Link href="/signup" className="text-primary font-bold hover:underline">Sign up</Link>
+          Already have an account? <Link href="/login" className="text-primary font-bold hover:underline">Login</Link>
         </p>
       </form>
     </div>
   );
 };
 
-export default LoginForm;
+export default SignupForm;
