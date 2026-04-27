@@ -59,13 +59,13 @@ const Sidebar = () => {
       {/* Backdrop for mobile */}
       {isSidebarOpen && (
         <div 
-          className="fixed inset-0 bg-slate-900/20 backdrop-blur-sm z-[60] md:hidden transition-all duration-300" 
+          className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[60] md:hidden transition-all duration-300" 
           onClick={closeSidebar}
         />
       )}
 
       {/* Sidebar Component */}
-      <aside className={`fixed left-0 top-0 h-full w-72 bg-white border-r border-slate-100 flex flex-col items-center py-8 z-[70] transition-all duration-500 md:w-20 lg:w-24 md:translate-x-0 ${
+      <aside className={`fixed left-0 top-0 h-full w-72 bg-card border-r border-border flex flex-col items-center py-8 z-[70] transition-all duration-500 md:w-20 lg:w-24 md:translate-x-0 ${
         isSidebarOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'
       }`}>
         {/* Brand Icon */}
@@ -75,7 +75,7 @@ const Sidebar = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
           </div>
-          <span className="md:hidden font-bold text-xl text-slate-800 title-serif tracking-tight">SRM Admin</span>
+          <span className="md:hidden font-bold text-xl text-foreground title-serif tracking-tight">SRM Admin</span>
         </div>
 
         {/* Menu Items */}
@@ -89,8 +89,8 @@ const Sidebar = () => {
                 onClick={closeSidebar}
                 className={`flex items-center gap-4 p-3.5 rounded-2xl transition-all duration-300 group relative w-full md:w-auto ${
                   isActive 
-                  ? 'bg-blue-50 text-primary shadow-sm' 
-                  : 'text-slate-400 hover:bg-slate-50 hover:text-slate-600'
+                  ? 'bg-primary/10 text-primary shadow-sm' 
+                  : 'text-muted hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-foreground'
                 }`}
               >
                 <div className="flex-shrink-0">{item.icon}</div>
@@ -109,7 +109,7 @@ const Sidebar = () => {
         <div className="w-full px-4 mt-auto">
           <button 
             onClick={() => setIsLogoutOpen(true)}
-            className="flex items-center gap-4 w-full p-3.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-2xl transition-all md:justify-center"
+            className="flex items-center gap-4 w-full p-3.5 text-muted hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-2xl transition-all md:justify-center"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />

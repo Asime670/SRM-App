@@ -1,17 +1,59 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const UIContext = createContext();
 
 export const UIProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [theme, setTheme] = useState("light");
+  const [user, setUser] = useState({
+    name: "Asime Domitila",
+    email: "asime@srmapp.com",
+    role: "Administrator",
+    profilePic: null,
+  });
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("srm-theme");
+    if (savedTheme) setTheme(savedTheme);
+
+    const savedUser = localStorage.getItem("srm-user");
+    if (savedUser) setUser(JSON.parse(savedUser));
+  }, []);
+
+  // Save to localStorage when theme changes
+  useEffect(() => {
+    localStorage.setItem("srm-theme", theme);
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
+  // Save to localStorage when user changes
+  useEffect(() => {
+    localStorage.setItem("srm-user", JSON.stringify(user));
+  }, [user]);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const closeSidebar = () => setIsSidebarOpen(false);
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
+  const updateUser = (updates) => setUser((prev) => ({ ...prev, ...updates }));
 
   return (
-    <UIContext.Provider value={{ isSidebarOpen, toggleSidebar, closeSidebar }}>
+    <UIContext.Provider value={{ 
+      isSidebarOpen, 
+      toggleSidebar, 
+      closeSidebar, 
+      theme, 
+      setTheme, 
+      toggleTheme,
+      user,
+      updateUser
+    }}>
       {children}
     </UIContext.Provider>
   );

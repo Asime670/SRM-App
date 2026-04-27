@@ -7,7 +7,20 @@
   --primary: #336699;
   --primary-hover: #254e77;
   --card-bg: #ffffff;
-  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --border: #e2e8f0;
+  --muted: #64748b;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --primary: #60a5fa;
+  --primary-hover: #93c5fd;
+  --card-bg: #1e293b;
+  --border: #334155;
+  --muted: #94a3b8;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
 }
 
 @theme inline {
@@ -16,6 +29,8 @@
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
   --color-card: var(--card-bg);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Inter', sans-serif;
 }
@@ -24,6 +39,7 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .premium-card {
@@ -31,6 +47,8 @@ body {
   border-radius: 1rem;
   box-shadow: var(--shadow);
   padding: 1.5rem;
+  border: 1px solid var(--border);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn-primary {
@@ -38,7 +56,7 @@ body {
 }
 
 .input-field {
-  @apply w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all;
+  @apply w-full px-4 py-2 bg-transparent border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-foreground;
 }
 
 .title-serif {
