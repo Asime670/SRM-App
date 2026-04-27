@@ -49,14 +49,6 @@ export default function DashboardPage() {
               <p className="text-muted font-medium mt-1">Here is what's happening in your institution today.</p>
             </div>
             
-            <div className="flex items-center gap-3 bg-card p-2 rounded-xl shadow-sm border border-border">
-              <div className="p-2 bg-slate-50 dark:bg-slate-800 rounded-lg text-muted">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <span className="text-sm font-bold text-foreground px-2">May 25, 2025</span>
-            </div>
           </div>
 
           {/* Stats Cards Grid */}

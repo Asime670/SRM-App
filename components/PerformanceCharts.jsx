@@ -11,12 +11,12 @@ const PerformanceCharts = ({ total, passed, failed }) => {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
       {/* Donut Chart Simulation */}
       <div className="premium-card flex flex-col items-center justify-center p-8 relative overflow-hidden h-full min-h-[350px]">
-        <h3 className="font-bold text-slate-800 absolute top-5 left-6">Distribution</h3>
+        <h3 className="font-bold text-foreground absolute top-5 left-6">Distribution</h3>
         
         <div className="relative w-48 h-48 flex items-center justify-center">
           {/* Simulated Donut with SVG */}
           <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="40" fill="transparent" stroke="#f1f5f9" strokeWidth="12" />
+            <circle cx="50" cy="50" r="40" fill="transparent" stroke="var(--border)" strokeWidth="12" />
             <circle 
               cx="50" cy="50" r="40" fill="transparent" 
               stroke="#22c55e" strokeWidth="12" 
@@ -32,8 +32,8 @@ const PerformanceCharts = ({ total, passed, failed }) => {
             />
           </svg>
           <div className="absolute flex flex-col items-center text-center">
-            <span className="text-3xl font-black text-slate-800">{total}</span>
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Students</span>
+            <span className="text-3xl font-black text-foreground">{total}</span>
+            <span className="text-[10px] text-muted font-bold uppercase tracking-widest">Students</span>
           </div>
         </div>
 
@@ -41,15 +41,15 @@ const PerformanceCharts = ({ total, passed, failed }) => {
           <div className="flex items-center gap-3">
             <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
             <div>
-              <p className="text-xs font-bold text-slate-700">Passed ({passed})</p>
-              <p className="text-[10px] text-slate-400">{passedPercent}%</p>
+              <p className="text-xs font-bold text-foreground">Passed ({passed})</p>
+              <p className="text-[10px] text-muted">{passedPercent}%</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
             <div>
-              <p className="text-xs font-bold text-slate-700">Failed ({failed})</p>
-              <p className="text-[10px] text-slate-400">{failedPercent}%</p>
+              <p className="text-xs font-bold text-foreground">Failed ({failed})</p>
+              <p className="text-[10px] text-muted">{failedPercent}%</p>
             </div>
           </div>
         </div>
@@ -58,15 +58,15 @@ const PerformanceCharts = ({ total, passed, failed }) => {
       {/* Activity Log / Notifications Simulation */}
       <div className="premium-card flex flex-col h-full min-h-[350px]">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="font-bold text-slate-800">Recent Activity</h3>
+          <h3 className="font-bold text-foreground">Recent Activity</h3>
           <button className="text-[10px] text-primary font-bold hover:underline">View All</button>
         </div>
         <div className="space-y-6">
           {[
-            { type: 'add', user: 'John (Maths)', time: '2m ago', color: 'text-green-500', bg: 'bg-green-50' },
-            { type: 'add', user: 'Mary (Biology)', time: '15m ago', color: 'text-green-500', bg: 'bg-green-50' },
-            { type: 'delete', user: 'Peter (Physics)', time: '1h ago', color: 'text-red-500', bg: 'bg-red-50' },
-            { type: 'update', user: 'Tilia (Maths)', time: '3h ago', color: 'text-blue-500', bg: 'bg-blue-50' },
+            { type: 'add', user: 'John (Maths)', time: '2m ago', color: 'text-green-500', bg: 'bg-green-50 dark:bg-green-900/20' },
+            { type: 'add', user: 'Mary (Biology)', time: '15m ago', color: 'text-green-500', bg: 'bg-green-50 dark:bg-green-900/20' },
+            { type: 'delete', user: 'Peter (Physics)', time: '1h ago', color: 'text-red-500', bg: 'bg-red-50 dark:bg-red-900/20' },
+            { type: 'update', user: 'Tilia (Maths)', time: '3h ago', color: 'text-blue-500', bg: 'bg-blue-50 dark:bg-blue-900/20' },
           ].map((item, i) => (
             <div key={i} className="flex items-center gap-4 group">
               <div className={`w-10 h-10 rounded-xl ${item.bg} ${item.color} flex items-center justify-center transition-all group-hover:scale-110`}>
@@ -87,8 +87,8 @@ const PerformanceCharts = ({ total, passed, failed }) => {
                 )}
               </div>
               <div className="flex-grow">
-                <p className="text-xs font-bold text-slate-700">New result {item.type === 'delete' ? 'deleted' : 'added'} for {item.user}</p>
-                <p className="text-[10px] text-slate-400 font-medium">{item.time}</p>
+                <p className="text-xs font-bold text-foreground">New result {item.type === 'delete' ? 'deleted' : 'added'} for {item.user}</p>
+                <p className="text-[10px] text-muted font-medium">{item.time}</p>
               </div>
             </div>
           ))}
