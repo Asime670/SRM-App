@@ -2,6 +2,7 @@
 
 import { useStudents } from "@/context/StudentContext";
 import { useUI } from "@/context/UIContext";
+import Link from "next/link";
 
 /**
  * DashboardHeader component with logo, search, and profile
@@ -42,7 +43,7 @@ const DashboardHeader = () => {
         </button>
 
         {/* User Profile */}
-        <div className="flex items-center gap-2 md:gap-3 md:pl-4 md:border-l md:border-border pr-2">
+        <Link href="/settings" className="flex items-center gap-2 md:gap-3 md:pl-4 md:border-l md:border-border pr-2 cursor-pointer hover:opacity-80 transition-opacity">
           <div className="text-right hidden sm:block">
             <p className="text-sm font-bold text-foreground">{user.name}</p>
             <p className="text-xs text-muted font-medium">{user.role}</p>
@@ -54,7 +55,7 @@ const DashboardHeader = () => {
               user.name.split(' ').map(n => n[0]).join('')
             )}
           </div>
-        </div>
+        </Link>
       </div>
     </header>
   );
