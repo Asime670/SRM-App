@@ -13,6 +13,7 @@ export default function SignupPage() {
           src="/auth-hero.png" 
           alt="Signup Hero" 
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
           priority
         />

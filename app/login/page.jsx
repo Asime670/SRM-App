@@ -13,6 +13,7 @@ export default function LoginPage() {
           src="/auth-hero.png" 
           alt="Login Hero" 
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
           priority
         />
