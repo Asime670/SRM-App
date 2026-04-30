@@ -40,7 +40,7 @@ export default function StudentsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8fafc]">
+    <div className="min-h-screen bg-background">
       <Sidebar />
       <DashboardHeader />
       
@@ -49,8 +49,8 @@ export default function StudentsPage() {
           
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold title-serif text-slate-800 tracking-tight">Student Management</h1>
-              <p className="text-slate-400 font-medium mt-1">Manage student profiles and academic levels</p>
+              <h1 className="text-3xl md:text-4xl font-bold title-serif text-foreground tracking-tight">Student Management</h1>
+              <p className="text-muted font-medium mt-1">Manage student profiles and academic levels</p>
             </div>
             
             <button 
@@ -64,15 +64,15 @@ export default function StudentsPage() {
             </button>
           </div>
 
-          <div className="premium-card !p-0 border border-slate-100 overflow-hidden shadow-sm">
-            <div className="p-6 border-b border-slate-100 bg-slate-50/50 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="premium-card !p-0 border-border overflow-hidden shadow-sm">
+            <div className="p-6 border-b border-border bg-slate-50/50 dark:bg-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 bg-white rounded-xl shadow-sm border border-slate-100 text-slate-400">
+                <div className="p-2.5 bg-card rounded-xl shadow-sm border border-border text-muted">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-slate-800">Student Directory</h3>
+                <h3 className="text-lg font-bold text-foreground">Student Directory</h3>
               </div>
               <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
             </div>
@@ -80,37 +80,37 @@ export default function StudentsPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-slate-100">
-                    <th className="px-6 py-5 font-bold text-slate-500 text-[11px] uppercase tracking-wider">Student</th>
-                    <th className="px-6 py-5 font-bold text-slate-500 text-[11px] uppercase tracking-wider">ID</th>
-                    <th className="px-6 py-5 font-bold text-slate-500 text-[11px] uppercase tracking-wider">Class</th>
-                    <th className="px-6 py-5 font-bold text-slate-500 text-[11px] uppercase tracking-wider text-center">Age</th>
-                    <th className="px-6 py-5 font-bold text-slate-500 text-[11px] uppercase tracking-wider">Gender</th>
-                    <th className="px-6 py-5 font-bold text-slate-500 text-[11px] uppercase tracking-wider text-right">Actions</th>
+                  <tr className="border-b border-border">
+                    <th className="px-6 py-5 font-bold text-muted text-[11px] uppercase tracking-wider">Student</th>
+                    <th className="px-6 py-5 font-bold text-muted text-[11px] uppercase tracking-wider">ID</th>
+                    <th className="px-6 py-5 font-bold text-muted text-[11px] uppercase tracking-wider">Class</th>
+                    <th className="px-6 py-5 font-bold text-muted text-[11px] uppercase tracking-wider text-center">Age</th>
+                    <th className="px-6 py-5 font-bold text-muted text-[11px] uppercase tracking-wider">Gender</th>
+                    <th className="px-6 py-5 font-bold text-muted text-[11px] uppercase tracking-wider text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-50">
+                <tbody className="divide-y divide-border">
                   {filteredStudents.length > 0 ? (
                     filteredStudents.map((student) => (
-                      <tr key={student.id} className="hover:bg-slate-50/80 transition-all group">
+                      <tr key={student.id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/50 transition-all group">
                         <td className="px-6 py-5">
                           <div className="flex items-center gap-3">
-                            <div className="w-9 h-9 rounded-full bg-blue-50 text-primary flex items-center justify-center font-bold text-xs group-hover:bg-primary group-hover:text-white transition-colors">
+                            <div className="w-9 h-9 rounded-full bg-blue-50 dark:bg-blue-900/30 text-primary flex items-center justify-center font-bold text-xs group-hover:bg-primary group-hover:text-white transition-colors">
                               {student.name.charAt(0)}
                             </div>
-                            <span className="text-sm font-bold text-slate-700">{student.name}</span>
+                            <span className="text-sm font-bold text-foreground">{student.name}</span>
                           </div>
                         </td>
                         <td className="px-6 py-5">
-                          <span className="text-xs font-black text-slate-400 bg-slate-100 px-2 py-1 rounded-md">#{student.id.toString().slice(-4)}</span>
+                          <span className="text-xs font-black text-muted bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">#{student.id.toString().slice(-4)}</span>
                         </td>
-                        <td className="px-6 py-5 text-sm text-slate-500 font-semibold">{student.class}</td>
-                        <td className="px-6 py-5 text-sm text-slate-500 font-bold text-center">{student.age}</td>
+                        <td className="px-6 py-5 text-sm text-muted font-semibold">{student.class}</td>
+                        <td className="px-6 py-5 text-sm text-muted font-bold text-center">{student.age}</td>
                         <td className="px-6 py-5">
                           <span className={`px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border ${
                             student.gender === 'Female' 
-                              ? 'bg-purple-50 text-purple-600 border-purple-100' 
-                              : 'bg-blue-50 text-blue-600 border-blue-100'
+                              ? 'bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 border-purple-100 dark:border-purple-800/50' 
+                              : 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-blue-100 dark:border-blue-800/50'
                           }`}>
                             {student.gender}
                           </span>
@@ -119,7 +119,7 @@ export default function StudentsPage() {
                           <div className="flex items-center justify-end gap-2">
                             <button 
                               onClick={() => handleEditClick(student)}
-                              className="p-2 text-slate-400 hover:text-primary transition-colors hover:bg-blue-50 rounded-lg"
+                              className="p-2 text-muted hover:text-primary transition-colors hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-lg"
                               title="Edit Student"
                             >
                               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,7 +128,7 @@ export default function StudentsPage() {
                             </button>
                             <button 
                               onClick={() => deleteStudent(student.id)}
-                              className="p-2 text-slate-400 hover:text-red-500 transition-colors hover:bg-red-50 rounded-lg"
+                              className="p-2 text-muted hover:text-red-500 transition-colors hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg"
                               title="Delete Student"
                             >
                               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,7 +141,7 @@ export default function StudentsPage() {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="6" className="px-6 py-20 text-center text-slate-400 font-medium italic">
+                      <td colSpan="6" className="px-6 py-20 text-center text-muted font-medium italic">
                         No students found matching your search.
                       </td>
                     </tr>
@@ -150,11 +150,11 @@ export default function StudentsPage() {
               </table>
             </div>
             
-            <div className="px-6 py-5 bg-slate-50/30 border-t border-slate-100 flex items-center justify-between">
-              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Total {filteredStudents.length} Students</p>
+            <div className="px-6 py-5 bg-slate-50/30 dark:bg-slate-800/30 border-t border-border flex items-center justify-between">
+              <p className="text-[10px] text-muted font-bold uppercase tracking-wider">Total {filteredStudents.length} Students</p>
               <div className="flex gap-2">
-                <button className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-xs font-bold text-slate-500 hover:bg-slate-50 transition-colors disabled:opacity-50" disabled>Previous</button>
-                <button className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-xs font-bold text-slate-500 hover:bg-slate-50 transition-colors">Next</button>
+                <button className="px-4 py-2 bg-card border border-border rounded-lg text-xs font-bold text-muted hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors disabled:opacity-50" disabled>Previous</button>
+                <button className="px-4 py-2 bg-card border border-border rounded-lg text-xs font-bold text-muted hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Next</button>
               </div>
             </div>
           </div>

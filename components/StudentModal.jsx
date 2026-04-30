@@ -41,14 +41,14 @@ const StudentModal = ({ isOpen, onClose, onSave, student }) => {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-slate-900/40 dark:bg-slate-950/80 backdrop-blur-sm" onClick={onClose} />
       
-      <div className="relative bg-white rounded-[2rem] shadow-2xl max-w-lg w-full p-8 animate-in zoom-in slide-in-from-bottom-4 duration-300">
+      <div className="relative bg-card rounded-[2rem] shadow-2xl max-w-lg w-full p-8 animate-in zoom-in slide-in-from-bottom-4 duration-300 border border-border">
         <div className="flex items-center justify-between mb-8">
-          <h3 className="text-2xl font-bold title-serif text-slate-800">
+          <h3 className="text-2xl font-bold title-serif text-foreground">
             {student ? "Edit Student" : "Add New Student"}
           </h3>
-          <button onClick={onClose} className="p-2 text-slate-400 hover:text-slate-600 transition-colors">
+          <button onClick={onClose} className="p-2 text-muted hover:text-foreground transition-colors">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -58,7 +58,7 @@ const StudentModal = ({ isOpen, onClose, onSave, student }) => {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 gap-6">
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Full Name</label>
+              <label className="block text-xs font-bold text-muted uppercase tracking-widest mb-2">Full Name</label>
               <input 
                 type="text" 
                 required
@@ -71,7 +71,7 @@ const StudentModal = ({ isOpen, onClose, onSave, student }) => {
             
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Class</label>
+                <label className="block text-xs font-bold text-muted uppercase tracking-widest mb-2">Class</label>
                 <input 
                   type="text" 
                   required
@@ -82,7 +82,7 @@ const StudentModal = ({ isOpen, onClose, onSave, student }) => {
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Age</label>
+                <label className="block text-xs font-bold text-muted uppercase tracking-widest mb-2">Age</label>
                 <input 
                   type="number" 
                   required
@@ -95,7 +95,7 @@ const StudentModal = ({ isOpen, onClose, onSave, student }) => {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">Gender</label>
+              <label className="block text-xs font-bold text-muted uppercase tracking-widest mb-2">Gender</label>
               <div className="flex gap-4">
                 {["Male", "Female"].map((g) => (
                   <button
@@ -105,7 +105,7 @@ const StudentModal = ({ isOpen, onClose, onSave, student }) => {
                     className={`flex-1 py-3 rounded-xl border font-bold text-sm transition-all ${
                       formData.gender === g 
                         ? 'bg-primary text-white border-primary shadow-lg shadow-primary/20' 
-                        : 'bg-white text-slate-500 border-slate-200 hover:bg-slate-50'
+                        : 'bg-card text-muted border-border hover:bg-slate-50 dark:hover:bg-slate-800'
                     }`}
                   >
                     {g}
@@ -119,7 +119,7 @@ const StudentModal = ({ isOpen, onClose, onSave, student }) => {
             <button 
               type="button"
               onClick={onClose}
-              className="flex-1 py-4 rounded-xl border border-slate-200 font-bold text-slate-500 hover:bg-slate-50 transition-all"
+              className="flex-1 py-4 rounded-xl border border-border font-bold text-muted hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
             >
               Cancel
             </button>
