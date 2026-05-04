@@ -5,6 +5,8 @@ import DashboardHeader from "@/components/DashboardHeader";
 import PerformanceCharts from "@/components/PerformanceCharts";
 import { useStudents } from "@/context/StudentContext";
 import { calculateStats } from "@/utils/calculateStats";
+import { exportToExcel, exportToWord } from "@/utils/exportUtils";
+import { useState } from "react";
 
 /**
  * Analytics Dashboard Page
@@ -12,6 +14,25 @@ import { calculateStats } from "@/utils/calculateStats";
 export default function AnalyticsPage() {
   const { students } = useStudents();
   const stats = calculateStats(students);
+  const [showExportMenu, setShowExportMenu] = useState(false);
+
+  const handleExport = (format) => {
+    // Prepare data for export
+    const exportData = students.map(s => ({
+      'Student Name': s.name,
+      'Subject': s.subject,
+      'Score': s.score,
+      'Grade': s.score >= 90 ? 'A+' : s.score >= 80 ? 'A' : s.score >= 70 ? 'B' : s.score >= 60 ? 'C' : s.score >= 50 ? 'D' : 'F',
+      'Status': s.score >= 50 ? 'Passed' : 'Failed'
+    }));
+
+    if (format === 'excel') {
+      exportToExcel(exportData, 'Student_Performance_Report');
+    } else if (format === 'word') {
+      exportToWord(exportData, 'Student_Performance_Report', 'Student Academic Performance Report');
+    }
+    setShowExportMenu(false);
+  };
 
   return (
     <div className="min-h-screen bg-[#f8fafc]">
@@ -27,12 +48,44 @@ export default function AnalyticsPage() {
               <p className="text-slate-400 font-medium mt-1">Deep dive into institutional performance metrics</p>
             </div>
             
-            <button className="flex items-center justify-center gap-2 px-6 py-3 bg-white border border-slate-200 rounded-xl text-slate-600 font-bold hover:bg-slate-50 transition-all shadow-sm w-full sm:w-auto">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              <span>Export Report</span>
-            </button>
+            <div className="relative">
+              <button 
+                onClick={() => setShowExportMenu(!showExportMenu)}
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-white border border-slate-200 rounded-xl text-slate-600 font-bold hover:bg-slate-50 transition-all shadow-sm w-full sm:w-auto"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>Export Report</span>
+              </button>
+
+              {showExportMenu && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-slate-100 py-2 z-50 animate-in fade-in zoom-in duration-200 origin-top-right">
+                  <button 
+                    onClick={() => handleExport('excel')}
+                    className="w-full text-left px-4 py-3 text-sm font-bold text-slate-600 hover:bg-slate-50 flex items-center gap-3 transition-colors"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-green-50 text-green-600 flex items-center justify-center">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2zM14 3.5L18.5 8H14V3.5zM6 20V4h7v5h5v11H6zM15.5 12h-7a.5.5 0 000 1h7a.5.5 0 000-1zM15.5 15h-7a.5.5 0 000 1h7a.5.5 0 000-1zM11.5 18h-3a.5.5 0 000 1h3a.5.5 0 000-1z" />
+                      </svg>
+                    </div>
+                    Export to Excel
+                  </button>
+                  <button 
+                    onClick={() => handleExport('word')}
+                    className="w-full text-left px-4 py-3 text-sm font-bold text-slate-600 hover:bg-slate-50 flex items-center gap-3 transition-colors"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2zM14 3.5L18.5 8H14V3.5zM6 20V4h7v5h5v11H6zM15.5 12h-7a.5.5 0 000 1h7a.5.5 0 000-1zM15.5 15h-7a.5.5 0 000 1h7a.5.5 0 000-1z" />
+                      </svg>
+                    </div>
+                    Export to Word
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">

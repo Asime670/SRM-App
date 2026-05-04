@@ -114,11 +114,11 @@ export default function SubjectsPage() {
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-muted uppercase tracking-widest mb-2">Assign Teacher</label>
-                    <select className="input-field !py-3 !rounded-xl bg-card">
-                      <option>Select Teacher...</option>
-                      <option>Dr. Smith</option>
-                      <option>Prof. Jones</option>
-                    </select>
+                    <input 
+                      type="text" 
+                      placeholder="e.g. Dr. Smith" 
+                      className="input-field !py-3 !rounded-xl" 
+                    />
                   </div>
                   <button className="btn-primary w-full !rounded-xl !py-4 shadow-lg shadow-primary/20">Create Subject</button>
                 </form>
