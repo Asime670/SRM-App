@@ -67,6 +67,7 @@ export default function Home() {
                 width={800} 
                 height={600} 
                 className="w-full object-cover aspect-[4/3]"
+                priority
               />
               
               {/* Overlay Text Box (Bottom Right) */}
