@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:cover": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:all": "vitest run && playwright test"
   },
   "dependencies": {
     "file-saver": "^2.0.5",
@@ -30,17 +36,3 @@
     "vitest": "^4.1.5"
   }
 }
-
-{
-   "scripts":	{ 
-    "dev":  "next dev",
-    "build": "next build",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:ui": "vitest --ui",
-    "test:cover": "vitest run --coverage",
-    "test:e2e": "playwright test",
-    "test:all": "vitest run && playwright test"
-}
-}
-
