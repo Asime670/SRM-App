@@ -12,5 +12,6 @@ export default defineConfig({
       '@': path.resolve(__dirname, './'),
     },
     include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    exclude: ['e2e/**', 'node_modules/**', '.next/**'],
   },
 });
