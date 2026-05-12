@@ -64,14 +64,14 @@ describe('Button – sizes', () => {
 
 describe('Button – disabled', () => {
   it('is disabled when the disabled prop is passed', () => {
-    render(<Button disabled>Can't click</Button>);
+    render(<Button disabled>Can&apos;t click</Button>);
     const btn = screen.getByRole('button') as HTMLButtonElement;
     expect(btn.disabled).toBe(true);
   });
 
   it('does not fire onClick when disabled', () => {
     const handler = vi.fn();
-    render(<Button disabled onClick={handler}>Can't click</Button>);
+    render(<Button disabled onClick={handler}>Can&apos;t click</Button>);
     fireEvent.click(screen.getByRole('button'));
     expect(handler).not.toHaveBeenCalled();
   });
