@@ -146,7 +146,7 @@ const LoginForm = () => {
         </button>
 
         <p className="text-center text-slate-600 font-medium pt-4">
-          Don't have an account? <Link href="/signup" className="text-primary font-bold hover:underline">Sign up</Link>
+          Don&apos;t have an account? <Link href="/signup" className="text-primary font-bold hover:underline">Sign up</Link>
         </p>
       </form>
     </div>

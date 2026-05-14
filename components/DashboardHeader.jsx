@@ -3,6 +3,7 @@
 import { useStudents } from "@/context/StudentContext";
 import { useUI } from "@/context/UIContext";
 import Link from "next/link";
+import Image from "next/image";
 
 /**
  * DashboardHeader component with logo, search, and profile
@@ -50,7 +51,13 @@ const DashboardHeader = () => {
           </div>
           <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 overflow-hidden flex items-center justify-center text-primary font-bold border-2 border-card shadow-sm flex-shrink-0">
             {user.profilePic ? (
-              <img src={user.profilePic} alt="Profile" className="w-full h-full object-cover" />
+              <Image 
+                src={user.profilePic} 
+                alt="Profile" 
+                width={40}
+                height={40}
+                className="w-full h-full object-cover"
+              />
             ) : (
               user.name.split(' ').map(n => n[0]).join('')
             )}

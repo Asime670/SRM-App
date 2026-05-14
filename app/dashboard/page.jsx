@@ -46,7 +46,7 @@ export default function DashboardPage() {
               <h2 className="text-3xl md:text-4xl font-bold title-serif text-foreground tracking-tight leading-tight">
                 Welcome back, <span className="inline-flex items-center gap-2 whitespace-nowrap">{user.name.split(' ')[0]} <span className="animate-wave inline-block">👋</span></span>
               </h2>
-              <p className="text-muted font-medium mt-1">Here is what's happening in your institution today.</p>
+              <p className="text-muted font-medium mt-1">Here is what&apos;s happening in your institution today.</p>
             </div>
             
           </div>

@@ -8,11 +8,14 @@ const StudentContext = createContext();
 export const StudentProvider = ({ children }) => {
   const [students, setStudents] = useState(initialStudents);
 
-  // Persistence to localStorage (optional but good for frontend-only app)
+  // Persistence to localStorage (must happen in useEffect for SSR apps)
   useEffect(() => {
-    const saved = localStorage.getItem("srm_students");
-    if (saved) {
-      setStudents(JSON.parse(saved));
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("srm_students");
+      if (saved) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setStudents(JSON.parse(saved));
+      }
     }
   }, []);
 

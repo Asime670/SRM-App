@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import Sidebar from "@/components/Sidebar";
 import DashboardHeader from "@/components/DashboardHeader";
 import { useUI } from "@/context/UIContext";
+import Image from "next/image";
 
 /**
  * Settings Page
@@ -72,7 +73,7 @@ export default function SettingsPage() {
                 <div className="flex flex-col items-center justify-center border-l border-border">
                   <div className="w-24 h-24 rounded-3xl bg-blue-100 dark:bg-blue-900/30 overflow-hidden flex items-center justify-center text-primary text-3xl font-black mb-4 border-2 border-border shadow-inner">
                     {user.profilePic ? (
-                      <img src={user.profilePic} alt="Profile" className="w-full h-full object-cover" />
+                      <Image src={user.profilePic} alt="Profile" width={96} height={96} className="w-full h-full object-cover" />
                     ) : (
                       user.name.split(' ').map(n => n[0]).join('')
                     )}

@@ -13,23 +13,20 @@ const StudentModal = ({ isOpen, onClose, onSave, student }) => {
     gender: "Male",
   });
 
-  useEffect(() => {
-    if (student) {
-      setFormData({
-        name: student.name || "",
-        class: student.class || "",
-        age: student.age || "",
-        gender: student.gender || "Male",
-      });
-    } else {
-      setFormData({
-        name: "",
-        class: "",
-        age: "",
-        gender: "Male",
-      });
-    }
-  }, [student, isOpen]);
+  const [prevStudent, setPrevStudent] = useState(student);
+  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
+
+  // Sync state with props in render body to avoid cascading renders in useEffect
+  if (student !== prevStudent || isOpen !== prevIsOpen) {
+    setPrevStudent(student);
+    setPrevIsOpen(isOpen);
+    setFormData({
+      name: student?.name || "",
+      class: student?.class || "",
+      age: student?.age || "",
+      gender: student?.gender || "Male",
+    });
+  }
 
   if (!isOpen) return null;
 

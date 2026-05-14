@@ -7,6 +7,7 @@ const UIContext = createContext();
 export const UIProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [theme, setTheme] = useState("light");
+  
   const [user, setUser] = useState({
     name: "Asime Domitila",
     email: "asime@srmapp.com",
@@ -14,12 +15,14 @@ export const UIProvider = ({ children }) => {
     profilePic: null,
   });
 
-  // Load from localStorage on mount
+  // Load from localStorage on mount - This must happen in useEffect to avoid hydration mismatch
   useEffect(() => {
     const savedTheme = localStorage.getItem("srm-theme");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (savedTheme) setTheme(savedTheme);
 
     const savedUser = localStorage.getItem("srm-user");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (savedUser) setUser(JSON.parse(savedUser));
   }, []);
 
