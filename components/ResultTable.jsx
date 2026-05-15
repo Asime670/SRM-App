@@ -1,17 +1,10 @@
+import { getGrade } from "@/utils/calculateStats";
+
 /**
  * Redesigned ResultTable component with extended columns and premium styling
  * @param {Object} props - { students, onDelete }
  */
 const ResultTable = ({ students, onDelete }) => {
-  // Helper to determine grade based on score
-  const getGrade = (score) => {
-    if (score >= 90) return 'A+';
-    if (score >= 80) return 'A';
-    if (score >= 70) return 'B';
-    if (score >= 60) return 'C';
-    if (score >= 50) return 'D';
-    return 'F';
-  };
 
   return (
     <div className="premium-card overflow-hidden !p-0 border border-border">

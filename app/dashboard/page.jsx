@@ -10,7 +10,8 @@ import PerformanceCharts from "@/components/PerformanceCharts";
 import RightPanel from "@/components/RightPanel";
 import { useStudents } from "@/context/StudentContext";
 import { useUI } from "@/context/UIContext";
-import { calculateStats } from "@/utils/calculateStats";
+import { calculateStats, getGrade } from "@/utils/calculateStats";
+import { exportToExcel } from "@/utils/exportUtils";
 
 /**
  * Redesigned Dashboard page following the new grid layout with Sidebar and Header
@@ -30,6 +31,24 @@ export default function DashboardPage() {
   const filteredStudents = students.filter((student) =>
     student.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Handle downloading all student results
+  const handleDownload = () => {
+    if (students.length === 0) return;
+    
+    // Prepare data for export with grades and status
+    const exportData = students.map((s, index) => ({
+      '#': index + 1,
+      'Name': s.name,
+      'Subject': s.subject,
+      'Score': s.score,
+      'Grade': getGrade(s.score),
+      'Status': s.score >= 50 ? 'PASS' : 'FAIL',
+      'Date': 'May 25, 2025' // Matching the table's hardcoded date
+    }));
+
+    exportToExcel(exportData, 'Student_Results_Summary');
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -78,7 +97,11 @@ export default function DashboardPage() {
                   <div className="relative flex-grow sm:flex-grow-0">
                     <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
                   </div>
-                  <button className="p-3 bg-primary text-white rounded-xl shadow-lg shadow-primary/20 hover:bg-primary-hover transition-all flex-shrink-0">
+                  <button 
+                    onClick={handleDownload}
+                    className="p-3 bg-primary text-white rounded-xl shadow-lg shadow-primary/20 hover:bg-primary-hover transition-all flex-shrink-0"
+                    title="Download All Results"
+                  >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
