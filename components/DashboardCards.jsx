@@ -109,7 +109,7 @@ const DashboardCards = ({ stats }) => {
               </div>
             )}
             {card.sub && (
-              <p className="text-[10px] text-muted font-medium">{card.sub}</p>
+              <p className="text-[10px] text-foreground/80 font-medium">{card.sub}</p>
             )}
           </div>
         </div>

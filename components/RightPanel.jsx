@@ -34,7 +34,7 @@ const RightPanel = ({ students }) => {
               </div>
               <div className="flex-grow">
                 <p className="text-sm font-bold text-foreground">{student.name}</p>
-                <p className="text-[10px] text-muted font-bold uppercase">{student.subject}</p>
+                <p className="text-[10px] text-foreground/80 font-bold uppercase">{student.subject}</p>
               </div>
               <p className={`text-sm font-black ${
                 idx === 0 ? 'text-green-500' : 'text-foreground'

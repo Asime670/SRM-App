@@ -70,30 +70,21 @@ const ResultForm = ({ onSubmit }) => {
           <div className="group">
             <label className="block text-sm font-bold text-foreground mb-2 group-focus-within:text-primary transition-colors">Student Name</label>
             <div className="relative">
-              <select
+              <input
+                type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="input-field appearance-none !py-3.5 !pl-12 !rounded-xl bg-card cursor-pointer"
-              >
-                <option value="">Select a student...</option>
-                <option value="Tilia">Tilia</option>
-                <option value="John">John</option>
-                <option value="Mary">Mary</option>
-                <option value="David">David</option>
-              </select>
+                placeholder="Enter student name"
+                className="input-field !py-3.5 !pl-12 !rounded-xl bg-card"
+              />
               <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 text-muted pointer-events-none">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
             </div>
-            <p className="mt-2 text-[10px] text-muted font-bold uppercase tracking-wider">Select from existing student records</p>
+            <p className="mt-2 text-[10px] text-muted font-bold uppercase tracking-wider">Enter student full name</p>
           </div>
 
           <div className="group">

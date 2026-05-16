@@ -35,7 +35,7 @@ const ResultTable = ({ students, onDelete }) => {
                       <span className="text-sm font-bold text-foreground">{student.name}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-5 text-sm text-muted font-medium">{student.subject}</td>
+                  <td className="px-6 py-5 text-sm text-foreground/90 font-medium">{student.subject}</td>
                   <td className="px-6 py-5 text-sm font-black text-foreground">{student.score}</td>
                   <td className="px-6 py-5">
                     <span className={`px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest border ${
