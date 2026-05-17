@@ -6,7 +6,7 @@ import Image from "next/image";
  */
 export default function Home() {
   return (
-    <main className="min-h-screen relative overflow-hidden bg-[#f0f4f8] flex flex-col justify-between">
+    <main className="min-h-screen relative overflow-hidden bg-background flex flex-col justify-between">
       {/* Background Geometric Patterns */}
       <div className="absolute top-0 left-0 w-64 h-64 opacity-10 -translate-x-1/4 -translate-y-1/4 pointer-events-none">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -40,11 +40,11 @@ export default function Home() {
           
           {/* Left Column: Text */}
           <div className="space-y-8 animate-in fade-in slide-in-from-left duration-1000">
-            <h1 className="text-6xl lg:text-7xl font-bold title-serif text-[#1e293b] leading-tight">
+            <h1 className="text-6xl lg:text-7xl font-bold title-serif text-slate-900 dark:text-white leading-tight">
               Student Result <br />
               <span className="text-[#336699]">Management App</span>
             </h1>
-            <p className="text-lg lg:text-xl text-slate-600 max-w-lg leading-relaxed font-medium">
+            <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-lg leading-relaxed font-medium">
               The ultimate platform for tracking student performance, managing records, 
               and visualizing academic statistics with ease and precision.
             </p>
@@ -71,8 +71,8 @@ export default function Home() {
               />
               
               {/* Overlay Text Box (Bottom Right) */}
-              <div className="absolute bottom-6 -right-6 lg:-right-12 bg-white/95 backdrop-blur-sm p-6 rounded-2xl shadow-xl max-w-xs border border-slate-100">
-                <p className="text-sm text-slate-700 leading-relaxed font-medium">
+              <div className="absolute bottom-6 -right-6 lg:-right-12 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm p-6 rounded-2xl shadow-xl max-w-xs border border-slate-100 dark:border-slate-700">
+                <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
                   The ultimate platform for tracking student performance, and comment performance, managing records, and visualizing academic statistics with ease and precision.
                 </p>
               </div>
@@ -82,22 +82,22 @@ export default function Home() {
       </div>
 
       {/* Footer / Bottom Bar */}
-      <footer className="w-full px-6 lg:px-24 py-8 border-t border-slate-200/50 flex items-center justify-between z-10">
+      <footer className="w-full px-6 lg:px-24 py-8 border-t border-slate-200/50 dark:border-slate-700/50 flex items-center justify-between z-10">
         <div className="flex items-center gap-12">
           {/* Logo Icon */}
-          <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white font-bold text-sm">
+          <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-slate-100 flex items-center justify-center text-white dark:text-slate-900 font-bold text-sm">
             N
           </div>
           
           <div className="flex items-center gap-8">
-            <div className="flex items-center gap-2 text-slate-600 font-semibold cursor-pointer hover:text-primary transition-colors">
+            <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300 font-semibold cursor-pointer hover:text-primary dark:hover:text-primary-hover transition-colors">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               <span>Contact Support</span>
             </div>
             
-            <div className="flex items-center gap-2 text-slate-600 font-semibold cursor-pointer hover:text-primary transition-colors">
+            <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300 font-semibold cursor-pointer hover:text-primary dark:hover:text-primary-hover transition-colors">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l2 2h3a2 2 0 012 2v10a2 2 0 01-2 2z" />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 17h6" />

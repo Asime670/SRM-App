@@ -6,7 +6,7 @@ import Image from "next/image";
  */
 export default function SignupPage() {
   return (
-    <main className="min-h-screen flex flex-col lg:flex-row bg-white">
+    <main className="min-h-screen flex flex-col lg:flex-row bg-background">
       {/* Left Side: Hero Image */}
       <div className="hidden lg:block lg:w-1/2 relative overflow-hidden">
         <Image 
@@ -30,7 +30,7 @@ export default function SignupPage() {
       </div>
 
       {/* Right Side: Signup Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-16 bg-slate-50 lg:bg-white">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-16 bg-slate-50 dark:bg-slate-900/50 lg:bg-background">
         <div className="w-full max-w-md">
           {/* Mobile Logo or Brand */}
           <div className="lg:hidden mb-10 text-center">
@@ -39,7 +39,7 @@ export default function SignupPage() {
           
           <SignupForm />
           
-          <div className="mt-8 text-center text-slate-500 text-sm">
+          <div className="mt-8 text-center text-slate-500 dark:text-slate-400 text-sm">
             <p>© 2026 Student Result Management App. All rights reserved.</p>
           </div>
         </div>
